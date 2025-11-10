@@ -18,12 +18,11 @@ namespace Bai01
 
             LogEvent("1. Constructor: Hàm dựng được gọi"); 
         }
-        private void LogEvent(string eventName)
+        private void LogEvent(string eventName) // Hàm nhận tên event và đưa nó lên listBox. 
         {
-            if(lstbEvents != null)
+            if(lstbEvents != null) // Kiểm tra xem listBox tên lsbtEvents đã tồn tại chưa. 
             {
                 lstbEvents.Items.Add(eventName);
-                lstbEvents.TopIndex = lstbEvents.Items.Count - 1; 
             }
         }
 
