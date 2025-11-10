@@ -23,6 +23,7 @@ namespace Bai01
             if(lstbEvents != null) // Kiểm tra xem listBox tên lsbtEvents đã tồn tại chưa. 
             {
                 lstbEvents.Items.Add(eventName);
+                lstbEvents.TopIndex = lstbEvents.Items.Count - 1; // tự động cuộn xuống để thấy thôn tin. 
             }
         }
 

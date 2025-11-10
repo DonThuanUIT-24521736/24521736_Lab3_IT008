@@ -32,11 +32,9 @@
             this.lstbEvents = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCreateChildForm = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.pblListEvent.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pblListEvent
@@ -63,7 +61,7 @@
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.flowLayoutPanel1.Controls.Add(this.btnCreateChildForm);
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Controls.Add(this.btnExit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(477, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -84,21 +82,13 @@
             this.btnCreateChildForm.UseVisualStyleBackColor = false;
             this.btnCreateChildForm.Click += new System.EventHandler(this.btnCreateChildForm_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Location = new System.Drawing.Point(3, 56);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(186, 96);
-            this.panel1.TabIndex = 2;
-            // 
             // btnExit
             // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Red;
             this.btnExit.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(3, 3);
+            this.btnExit.Location = new System.Drawing.Point(143, 3);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(134, 47);
             this.btnExit.TabIndex = 1;
@@ -124,8 +114,6 @@
             this.pblListEvent.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -137,7 +125,6 @@
         private System.Windows.Forms.ListBox lstbEvents;
         private System.Windows.Forms.Button btnCreateChildForm;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Panel panel1;
     }
 }
 
