@@ -8,3 +8,4 @@ D:\Visual Programming\LAB\Lab3\Bai04\obj\Debug\Bai04.csproj.GenerateResource.cac
 D:\Visual Programming\LAB\Lab3\Bai04\obj\Debug\Bai04.csproj.CoreCompileInputs.cache
 D:\Visual Programming\LAB\Lab3\Bai04\obj\Debug\Bai04.exe
 D:\Visual Programming\LAB\Lab3\Bai04\obj\Debug\Bai04.pdb
+D:\Visual Programming\LAB\Lab3\Bai04\obj\Debug\Bai04.exe.config

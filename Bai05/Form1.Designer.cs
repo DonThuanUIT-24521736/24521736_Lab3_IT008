@@ -33,9 +33,9 @@
             this.lblNumber2 = new System.Windows.Forms.Label();
             this.btnPlus = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
-            this.btnMutiply = new System.Windows.Forms.Button();
+            this.btnMultiply = new System.Windows.Forms.Button();
             this.btnDivide = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblAnswer = new System.Windows.Forms.Label();
             this.txtAnswer = new System.Windows.Forms.TextBox();
             this.txtNumber2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -91,17 +91,17 @@
             this.btnMinus.UseVisualStyleBackColor = true;
             this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
             // 
-            // btnMutiply
+            // btnMultiply
             // 
-            this.btnMutiply.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnMutiply.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMutiply.Location = new System.Drawing.Point(341, 209);
-            this.btnMutiply.Name = "btnMutiply";
-            this.btnMutiply.Size = new System.Drawing.Size(86, 40);
-            this.btnMutiply.TabIndex = 6;
-            this.btnMutiply.Text = "x";
-            this.btnMutiply.UseVisualStyleBackColor = true;
-            this.btnMutiply.Click += new System.EventHandler(this.btnMutiply_Click);
+            this.btnMultiply.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnMultiply.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiply.Location = new System.Drawing.Point(341, 209);
+            this.btnMultiply.Name = "btnMultiply";
+            this.btnMultiply.Size = new System.Drawing.Size(86, 40);
+            this.btnMultiply.TabIndex = 6;
+            this.btnMultiply.Text = "x";
+            this.btnMultiply.UseVisualStyleBackColor = true;
+            this.btnMultiply.Click += new System.EventHandler(this.btnMultiply_Click);
             // 
             // btnDivide
             // 
@@ -115,19 +115,21 @@
             this.btnDivide.UseVisualStyleBackColor = true;
             this.btnDivide.Click += new System.EventHandler(this.btnDivide_Click);
             // 
-            // label1
+            // lblAnswer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(118, 294);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "label1";
+            this.lblAnswer.AutoSize = true;
+            this.lblAnswer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblAnswer.Location = new System.Drawing.Point(118, 294);
+            this.lblAnswer.Name = "lblAnswer";
+            this.lblAnswer.Size = new System.Drawing.Size(57, 16);
+            this.lblAnswer.TabIndex = 8;
+            this.lblAnswer.Text = "Answer: ";
             // 
             // txtAnswer
             // 
             this.txtAnswer.Location = new System.Drawing.Point(203, 294);
             this.txtAnswer.Name = "txtAnswer";
+            this.txtAnswer.ReadOnly = true;
             this.txtAnswer.Size = new System.Drawing.Size(314, 22);
             this.txtAnswer.TabIndex = 9;
             // 
@@ -145,9 +147,9 @@
             this.ClientSize = new System.Drawing.Size(580, 366);
             this.Controls.Add(this.txtNumber2);
             this.Controls.Add(this.txtAnswer);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblAnswer);
             this.Controls.Add(this.btnDivide);
-            this.Controls.Add(this.btnMutiply);
+            this.Controls.Add(this.btnMultiply);
             this.Controls.Add(this.btnMinus);
             this.Controls.Add(this.btnPlus);
             this.Controls.Add(this.lblNumber2);
@@ -168,9 +170,9 @@
         private System.Windows.Forms.Label lblNumber2;
         private System.Windows.Forms.Button btnPlus;
         private System.Windows.Forms.Button btnMinus;
-        private System.Windows.Forms.Button btnMutiply;
+        private System.Windows.Forms.Button btnMultiply;
         private System.Windows.Forms.Button btnDivide;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAnswer;
         private System.Windows.Forms.TextBox txtAnswer;
         private System.Windows.Forms.TextBox txtNumber2;
     }

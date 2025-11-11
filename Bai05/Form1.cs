@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bai05
@@ -19,17 +12,23 @@ namespace Bai05
         private void PerformCalculation(string operation)
         {
             double num1, num2;
+            // sử dụng double.TryParse() để chuyển đổi văn bản từ TextBox sang số. 
+            // TryParse() sẽ trả về true nếu thành công và false nếu thất bại (ví dụ: người dùng nhập chữ "abc").
             bool isNum1Valid = double.TryParse(txtNumber1.Text, out num1);
             bool isNum2Valid = double.TryParse(txtNumber2.Text, out num2);
 
+            // Kiểm tra if (!isNum1Valid || !isNum2Valid) để đảm bảo cả hai ô đều là số hợp lệ.
+            // Nếu không, một MessageBox lỗi sẽ hiện ra và hàm sẽ dừng lại.
             if (!isNum1Valid || !isNum2Valid)
             {
                 MessageBox.Show("Vui lòng nhập số hợp lệ vào cả hai ô!", "Lỗi đầu vào",
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            double result = 0;
 
+            // Dựa trên chuỗi operation("+", "-", "x", "/") được truyền vào,
+            // chương trình thực hiện phép toán tương ứng và gán kết quả cho biến result.
+            double result = 0;
             switch (operation)
             {
                 case "+":
@@ -52,6 +51,9 @@ namespace Bai05
             }
             txtAnswer.Text = result.ToString(); 
         }
+
+        // Các hàm này nhận lệnh từ người dùng click vào button tương ứng. 
+        // Chúng sẽ gọi Hàm PerformCalculation với tham số truyền vào là toán tử tương ứng. 
         private void btnPlus_Click(object sender, EventArgs e)
         {
             PerformCalculation("+"); 
@@ -62,7 +64,7 @@ namespace Bai05
             PerformCalculation("-"); 
         }
 
-        private void btnMutiply_Click(object sender, EventArgs e)
+        private void btnMultiply_Click(object sender, EventArgs e)
         {
             PerformCalculation("x"); 
         }

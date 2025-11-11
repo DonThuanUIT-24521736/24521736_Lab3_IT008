@@ -402,6 +402,7 @@
             this.btnPerson.TabIndex = 21;
             this.btnPerson.Text = "%";
             this.btnPerson.UseVisualStyleBackColor = true;
+            this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click);
             // 
             // btnMultiply
             // 
@@ -517,12 +518,12 @@
             this.Controls.Add(this.txtDisplay);
             this.Controls.Add(this.menu);
             this.ForeColor = System.Drawing.Color.Blue;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menu;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Máy Tính Tay";
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -19,8 +19,10 @@ namespace Bai04
 
         private void colorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Lấy kết quả màu mà người dùng chọn từ colorDialog. 
             DialogResult result = colorDialog1.ShowDialog(); 
 
+            // chỉ thực hiện đổi màu khi người dùng nhấn OK. 
             if (result == DialogResult.OK)
             {
                 Color selectColor = colorDialog1.Color;

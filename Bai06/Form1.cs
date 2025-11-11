@@ -14,19 +14,24 @@ namespace Bai06
             txtDisplay.Text = "0";
         }
 
+        // Hàm nhận giá trị số. 
         private void btnNumber_Click(object sender, EventArgs e) // 
         {
             var btn = (Button)sender;
-            if (btn.Text == "." && txtDisplay.Text.Contains(".")) return; 
-
-            if (calc.IsNewNumber || txtDisplay.Text == "0") 
+            // Xử lý khi người dùng nhấn . nhiều lần 
+            if (btn.Text == "." && txtDisplay.Text.Contains(".")) return;
+            // Xử lý khi người dùng muốn nhập giá trị 0,...: 
+            if (calc.IsNewNumber || txtDisplay.Text == "0")
+            {
                 txtDisplay.Text = btn.Text == "." ? "0." : btn.Text;
+            }
             else
                 txtDisplay.Text += btn.Text;
 
             calc.IsNewNumber = false;
         }
 
+        // Hàm nhận toán tử khi người dùng nhấn vào toán tử bất kỳ. 
         private void btnOperator_Click(object sender, EventArgs e)
         {
             var btn = (Button)sender;
@@ -41,14 +46,22 @@ namespace Bai06
             lblExpression.Text = $"{calc.Operand1} {calc.PendingOperation}";
         }
 
+        // Hàm cho nút =
         private void btnEquals_Click(object sender, EventArgs e)
         {
+           
             try
             {
                 double operand2 = double.Parse(txtDisplay.Text);
                 // Cập nhật nhãn biểu thức
-                if (calc.PendingOperation == "") lblExpression.Text = $"{operand2} =";
-                else 
+                if (calc.PendingOperation == "")
+                {
+                    lblExpression.Text = $"{operand2} =";
+                    txtDisplay.Text = operand2.ToString();
+                    calc.Operand1 = operand2;
+                    return; 
+                }
+                else
                     lblExpression.Text = $"{calc.Operand1} {calc.PendingOperation} {operand2} =";
 
 
@@ -90,5 +103,6 @@ namespace Bai06
 
             if (result == DialogResult.Yes) Application.Exit(); 
         }
+        
     }
 }

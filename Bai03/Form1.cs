@@ -12,19 +12,27 @@ namespace Bai03
 {
     public partial class Form1 : Form
     {
-
+        // Khai báo đối tượng random. 
+        // đối tượng này được tạo 1 lần duy nhất. 
+        private Random random = new Random(); 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void btnChangeColor_Click(object sender, EventArgs e)
+
+        // Hàm được gọi khi nhấn nút 'btnChangeColor'. 
+        private void btnChangeColor_Click(object sender, EventArgs e) 
         {
-            Random random = new Random(); 
-            Color newcolor = Color.FromArgb(
-                random.Next(256), 
-                random.Next(255),
-                random.Next(255));
+            // lấy ba màu đỏ, xanh lục, xanh nước biển ngẫu nhiên. 
+            int red = random.Next(256); 
+            int green = random.Next(256);
+            int blue = random.Next(256);
+
+            // Hàm FromArgb giống như việc pha 3 màu đỏ, xanh lá, xanh nước biển để tạo ra màu mới. 
+            Color newcolor = Color.FromArgb(red, green, blue); 
+
+
             this.BackColor = newcolor; 
         }
 
