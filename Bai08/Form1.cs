@@ -13,12 +13,18 @@ namespace Bai08
 {
     public partial class Form1 : Form
     {
+        // tạo ra 1 biến acv kiểu AccountService. 
+        // khởi tạo nó ngay khi lớp được tạo.
+        // Dùng để gọi các hàm liên quan AccountService. 
+        // để ở chế độ readonly không được gán lại biến này. 
         private readonly AccountService acv = new AccountService();
         public Form1()
         {
             InitializeComponent();
 
         }
+
+        // Hàm kiểm tra thông tin nhập vào. 
         private bool ValidateInputs(out string message)
         {
             message = "";
@@ -43,9 +49,11 @@ namespace Bai08
             }
             return true;
         }
+
+        // Hàm tạo tài khoản từ dữ liệu người dùng nhập vào. 
         private Account BuildAccountFromInputs()
         {
-            decimal balance = decimal.Parse(txtSoTien.Text.Trim(),
+            decimal money = decimal.Parse(txtSoTien.Text.Trim(),
                                             NumberStyles.Number,
                                             CultureInfo.InvariantCulture);
 
@@ -53,9 +61,16 @@ namespace Bai08
                 txtSoTK.Text.Trim(),
                 txtTen.Text.Trim(),
                 txtDiaChi.Text.Trim(),
-                balance
+                money
             );
         }
+
+
+        // Dùng cặp lệnh BeginUpdate() và EndUpdate() để tạm dừng việc vẽ khi đang cập nhật dữ liệu. 
+        // => Giúp ứng dụng chạy mượt hơn. 
+        // Hàm RenderListView để Lấy danh sách tài khoản mới nhất từ acv.Items,
+        // xóa sạch mọi thứ đang hiển thị trên ListView,
+        // và sau đó vẽ lại toàn bộ danh sách đó lên ListView (lsvTaiKhoans).
         private void RenderListView()
         {
             lsvTaiKhoans.BeginUpdate();
@@ -76,10 +91,14 @@ namespace Bai08
 
             lsvTaiKhoans.EndUpdate();
         }
+
+        // Hàm tính tổng tiền. 
         private void UpdateTotalLabel()
         {
-            txtTongTien.Text = acv.TotalBalance().ToString("N0");
+            txtTongTien.Text = acv.TotalMoney().ToString("N0");
         }
+
+        // Hàm xóa dữ liệu trong các txt. 
         private void ClearInputs()
         {
             txtSoTK.Clear();
@@ -88,21 +107,13 @@ namespace Bai08
             txtSoTien.Clear();
             txtSoTK.Focus();
         }
-        private void FillInputsFromSelectedItem()
-        {
-            if (lsvTaiKhoans.SelectedItems.Count == 0) return;
 
-            var sel = lsvTaiKhoans.SelectedItems[0];
-            txtSoTK.Text = sel.SubItems[1].Text;
-            txtTen.Text = sel.SubItems[2].Text;
-            txtDiaChi.Text = sel.SubItems[3].Text;
+        
 
-            // Bỏ dấu phẩy ngăn cách nghìn trước khi đưa lại vào textbox
-            txtSoTien.Text = sel.SubItems[4].Text.Replace(",", "");
-        }
+        // Hàm cho nút Thêm / Cập Nhật. 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string msg;
+            string msg; // biến chuỗi để lấy chuỗi lỗi từ hàm ValidateInputs về. 
             if (!ValidateInputs(out msg))
             {
                 MessageBox.Show(msg, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -122,8 +133,11 @@ namespace Bai08
                             MessageBoxIcon.Information);
         }
 
+
+        
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            // Kiểm tra người dùng có nhập số tài khoản cần xóa không 
             string accountNumber = txtSoTK.Text.Trim();
             if (string.IsNullOrEmpty(accountNumber))
             {
@@ -131,7 +145,7 @@ namespace Bai08
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            // Nếu người dùng đã nhập rồi thì kiểm tra xem số tài khoản có tồn tại không. 
             var exist = acv.Find(accountNumber);
             if (exist == null)
             {
@@ -148,9 +162,11 @@ namespace Bai08
 
             if (ask == DialogResult.Yes)
             {
-                acv.Remove(accountNumber);
-                RenderListView();
+                acv.Remove(accountNumber); // Xóa 
+                // Cập nhật danh sách. 
+                RenderListView(); 
                 UpdateTotalLabel();
+                // Thông báo cho người dùng. 
                 MessageBox.Show("Xóa tài khoản thành công.",
                                 "Thông báo",
                                 MessageBoxButtons.OK,
@@ -172,9 +188,25 @@ namespace Bai08
             }
         }
 
+        // Hàm cho việc chọn dòng dữ liệu trong danh sách tài khoản và chỉnh sửa. 
         private void lsvTaiKhoans_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Gọi đến hàm xử lý chuyên biệt. 
             FillInputsFromSelectedItem();
+        }
+
+        //Hàm này giúp Chọn Tài Khoản đã có trong dánh sách và cập nhật. 
+        private void FillInputsFromSelectedItem()
+        {
+            if (lsvTaiKhoans.SelectedItems.Count == 0) return;
+
+            var sel = lsvTaiKhoans.SelectedItems[0];
+            txtSoTK.Text = sel.SubItems[1].Text;
+            txtTen.Text = sel.SubItems[2].Text;
+            txtDiaChi.Text = sel.SubItems[3].Text;
+
+            // Bỏ dấu phẩy ngăn cách nghìn trước khi đưa lại vào textbox
+            txtSoTien.Text = sel.SubItems[4].Text.Replace(",", "");
         }
     }
 }

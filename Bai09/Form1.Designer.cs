@@ -30,6 +30,11 @@
         {
             this.grThongTin = new System.Windows.Forms.GroupBox();
             this.dgvSinhVien = new System.Windows.Forms.DataGridView();
+            this.colMSSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colChuyenNganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXoaChon = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.lstbMonDaChon = new System.Windows.Forms.ListBox();
@@ -46,11 +51,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.colMSSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colChuyenNganh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSoMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grThongTin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhVien)).BeginInit();
             this.SuspendLayout();
@@ -97,6 +97,41 @@
             this.dgvSinhVien.Size = new System.Drawing.Size(747, 252);
             this.dgvSinhVien.TabIndex = 16;
             // 
+            // colMSSV
+            // 
+            this.colMSSV.HeaderText = "MSSV";
+            this.colMSSV.MinimumWidth = 6;
+            this.colMSSV.Name = "colMSSV";
+            this.colMSSV.Width = 125;
+            // 
+            // colHoTen
+            // 
+            this.colHoTen.HeaderText = "Họ Tên";
+            this.colHoTen.MinimumWidth = 6;
+            this.colHoTen.Name = "colHoTen";
+            this.colHoTen.Width = 150;
+            // 
+            // colChuyenNganh
+            // 
+            this.colChuyenNganh.HeaderText = "Chuyên Ngành";
+            this.colChuyenNganh.MinimumWidth = 6;
+            this.colChuyenNganh.Name = "colChuyenNganh";
+            this.colChuyenNganh.Width = 150;
+            // 
+            // colGioiTinh
+            // 
+            this.colGioiTinh.HeaderText = "Giới Tính";
+            this.colGioiTinh.MinimumWidth = 6;
+            this.colGioiTinh.Name = "colGioiTinh";
+            this.colGioiTinh.Width = 125;
+            // 
+            // colSoMon
+            // 
+            this.colSoMon.HeaderText = "Số Môn";
+            this.colSoMon.MinimumWidth = 6;
+            this.colSoMon.Name = "colSoMon";
+            this.colSoMon.Width = 125;
+            // 
             // btnXoaChon
             // 
             this.btnXoaChon.Location = new System.Drawing.Point(514, 394);
@@ -123,6 +158,7 @@
             this.lstbMonDaChon.ItemHeight = 16;
             this.lstbMonDaChon.Location = new System.Drawing.Point(514, 224);
             this.lstbMonDaChon.Name = "lstbMonDaChon";
+            this.lstbMonDaChon.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstbMonDaChon.Size = new System.Drawing.Size(315, 164);
             this.lstbMonDaChon.TabIndex = 13;
             // 
@@ -154,6 +190,7 @@
             this.lstbMonChuaChon.ItemHeight = 16;
             this.lstbMonChuaChon.Location = new System.Drawing.Point(75, 224);
             this.lstbMonChuaChon.Name = "lstbMonChuaChon";
+            this.lstbMonChuaChon.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstbMonChuaChon.Size = new System.Drawing.Size(315, 164);
             this.lstbMonChuaChon.TabIndex = 10;
             // 
@@ -246,40 +283,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã Sinh Viên: ";
             // 
-            // colMSSV
-            // 
-            this.colMSSV.HeaderText = "MSSV";
-            this.colMSSV.MinimumWidth = 6;
-            this.colMSSV.Name = "colMSSV";
-            // 
-            // colHoTen
-            // 
-            this.colHoTen.HeaderText = "Họ Tên";
-            this.colHoTen.MinimumWidth = 6;
-            this.colHoTen.Name = "colHoTen";
-            this.colHoTen.Width = 150;
-            // 
-            // colChuyenNganh
-            // 
-            this.colChuyenNganh.HeaderText = "Chuyên Ngành";
-            this.colChuyenNganh.MinimumWidth = 6;
-            this.colChuyenNganh.Name = "colChuyenNganh";
-            this.colChuyenNganh.Width = 150;
-            // 
-            // colGioiTinh
-            // 
-            this.colGioiTinh.HeaderText = "Giới Tính";
-            this.colGioiTinh.MinimumWidth = 6;
-            this.colGioiTinh.Name = "colGioiTinh";
-            this.colGioiTinh.Width = 125;
-            // 
-            // colSoMon
-            // 
-            this.colSoMon.HeaderText = "Số Môn";
-            this.colSoMon.MinimumWidth = 6;
-            this.colSoMon.Name = "colSoMon";
-            this.colSoMon.Width = 125;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -289,7 +292,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Quản Lí Sinh Viên";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grThongTin.ResumeLayout(false);
             this.grThongTin.PerformLayout();

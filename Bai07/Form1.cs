@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Bai07.Seat;
 
@@ -88,22 +83,19 @@ namespace Bai07
                     break;
             }
         }
-
+        // Hàm cho nút Chọn. 
         private void btnChon_Click(object sender, EventArgs e)
         {
+            // Khóa việc chọn ghế. 
             isPaid = false;
+            // Tính tổng tiền của các ghế ĐANG CHỌN.    
             int total = CalculateTotal(seats);
-            foreach (var seat in seats)
-            {
-                if(seat.State == SeatState.Selected)
-                {
-                    seat.State = SeatState.Sold; 
-                }
-                
-            }
-            DoiMau();
+
+            // Hiển thị tiền các ghế đã chọn. 
             txtThanhTien.Text = total.ToString("N0") + " đ";
         }
+
+        // Hàm tính tiền các ghế đã chọn. 
         public int CalculateTotal(IEnumerable<Seat> seats)
         {
             int sum = 0;
@@ -173,24 +165,45 @@ namespace Bai07
             isPaid = true;
         }
 
-        
+        // Hàm cho nút Thanh Toán.
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            // Kiểm tra xem có ghế nào được chọn không
+            int total = CalculateTotal(seats);
+            if (total == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn ghế nào để thanh toán!");
+                return;
+            }
             // Xác nhận với người dùng
-            var result = MessageBox.Show("Bạn có chắc muốn thanh toán không?",
-                                         "Xác nhận",
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
+            var result = MessageBox.Show(
+                $"Tổng tiền của bạn là {total:N0} đ." +
+                $" Bạn có chắc muốn thanh toán không?",
+                    "Xác nhận thanh toán",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                    );
 
             if (result == DialogResult.Yes)
             {
+                // Chuyển ghế sang đã bán(thay vì đã chọn). 
+                foreach (var seat in seats)
+                {
+                    if (seat.State == SeatState.Selected)
+                    {
+                        seat.State = SeatState.Sold; // Chuyển thành Đã bán
+                    }
+                }
+                DoiMau();
+
+
                 // Đặt trạng thái đã thanh toán
                 isPaid = true;
 
                 // Reset tổng tiền
                 txtThanhTien.Text = "0";
 
-                // Cập nhật lại giao diện nếu cần
+                // Cập nhật lại giao diện nếu cần. 
                 MessageBox.Show("Thanh toán thành công! Vé của bạn đã được xác nhận.");
             }
         }
@@ -198,10 +211,12 @@ namespace Bai07
         private void btnKetThuc_Click(object sender, EventArgs e)
         {
             // Hỏi xác nhận trước khi thoát
-            var result = MessageBox.Show("Bạn có chắc chắn muốn kết thúc và thoát chương trình không?",
-                                         "Xác nhận thoát",
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
+            var result = MessageBox.Show(
+                "Bạn có chắc chắn muốn kết thúc và thoát chương trình không?",
+                "Xác nhận thoát",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+                );
 
             if (result == DialogResult.Yes)
             {

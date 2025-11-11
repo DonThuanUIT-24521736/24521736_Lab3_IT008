@@ -8,9 +8,9 @@ namespace Bai07
 {
     public class Seat
     {
-        public int Number { get; set; }
-        public int Row { get; set; }
-        public int Price {  get; set; }
+        public int Number { get; set; } // thứ tự ghế. 
+        public int Row { get; set; } // Ghế thuộc hàng nào. 
+        public int Price {  get; set; } // số tiền của ghế. 
         public enum SeatState
         {
             Available,   // Ghế trống
@@ -21,7 +21,7 @@ namespace Bai07
 
         public Seat(int number, int row, int price)
         {
-            Number = number;
+            Number = number; 
             Row = row;
             Price = price;
         }
